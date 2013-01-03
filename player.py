@@ -39,17 +39,18 @@ def get_bass_ledger(n):
 
 
 def message_handler(location, address, data):
-    if address == "/sync":
-        global t
-        global started
-        global start_t
-        global last_t
-        t = data[0]
-        if not started:
-            started = True
-            start_t = time.time()
-            last_t = start_t
-receiver = osc.Receiver(39393, message_handler)
+    if address != "/sync":
+        return
+    global t
+    global started
+    global start_t
+    global last_t
+    t = data[0]
+    if not started:
+        started = True
+        start_t = time.time()
+        last_t = start_t
+osc.Receiver(39393, message_handler)
 
 def draw():
     global t
