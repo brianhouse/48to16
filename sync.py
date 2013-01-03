@@ -11,8 +11,8 @@ SYNC_FPS = 0.5
 
 db = crashdb.load("data.json")
 notes = db['notes']
-db.close()
 
+player = osc.Sender(5280)
 visuals = osc.Sender(39393)
 
 time.sleep(COUNTOFF)
@@ -34,6 +34,10 @@ while True:
         latency = t - notes[i][0]
         if not first_frame and abs(latency * 1000.0) > .9:
             log.warning("latency %fms" % (latency * 1000.0))
+        if not first_frame:
+            if notes[i][1][0] == 1: ## change this for different voices
+                player.send("/braid/note", notes[i][1])            
+            # player.send("/braid/note", notes[i][1])                            
         i += 1
     time.sleep(0.0005)
     first_frame = False    

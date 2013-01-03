@@ -28,7 +28,6 @@ started = False
 
 def message_handler(location, address, data):
     if address == "/sync":
-        # t_queue.put(data[0])
         global t
         global started
         global start_t
