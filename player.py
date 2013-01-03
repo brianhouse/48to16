@@ -10,8 +10,8 @@ if len(sys.argv) > 1:
     CHANNEL = int(sys.argv[1])
 
 db = crashdb.load("data.json")
-db.close()
 note_rows = db['notes']
+db.close()
 notes = [nr[0] for nr in note_rows]
 note_infos = [nr[1] for nr in note_rows]
 
@@ -25,6 +25,18 @@ start_t = 0
 t = 0
 last_t = 0
 started = False
+
+names = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B']
+def get_note_name(n):
+    n -= 24
+    i = n % 12
+    return names[i]
+
+ledgers = {'B': 4, 'C': 5, 'Db': 6, 'D': 6, 'Eb': 7, 'E': 7, 'F': 8, 'Gb': 9, 'G': 9, 'Ab': 10, 'A': 10, 'Bb': 11}
+def get_bass_ledger(n):
+    name = get_note_name(n)
+    return ledgers[name]
+
 
 def message_handler(location, address, data):
     if address == "/sync":

@@ -1,1 +1,3 @@
-ok, so we want playback actually in the client
+- we want clicktrack playback in the client
+- sync doesnt take into account transmission time -- it should also transmit the clock, and the client calculates latency
+- video playback? jitter -- receive sync just like player
