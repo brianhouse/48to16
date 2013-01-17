@@ -1,14 +1,17 @@
-- we want clicktrack playback in the client
-- video playback? jitter -- receive sync just like player. or send sync?
-
+sound? nah-- then people would have to wear headphones.
 
 ### latency
 
-if we are so dependent on the clocks being in sync, what's the point of the sync messages, other than kicking it off at the beginning? 
-
-so really need to send and receive pings, get a network latency time, and adjust via that.
+could send and receive pings, get a network latency time, and adjust via that.
 
 
 ### network
 
 see if there are 4 jacks on the wrt, could just use that, has built-in router.
+
+
+### eyebeam
+
+I need four computers to run this thing.
+
+
