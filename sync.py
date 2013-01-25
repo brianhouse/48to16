@@ -12,6 +12,7 @@ def message_handler(location, address, data):
     if address != "/update":
         return
     t = data[0]
+    t += config['latency']
     sender.send("/sync", t)
 
 osc.Receiver(23232, message_handler, blocking=True)

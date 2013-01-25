@@ -52,7 +52,7 @@ class Sender(object):
         host, port = None, None
         assert len(target) <= 2
         if len(target) == 1:
-            host, port = 'localhost', target[0]
+            host, port = '0.0.0.0', target[0]
         if len(target) == 2:
             host, port = target
         if host is not None and port is not None:        
@@ -66,7 +66,7 @@ class Receiver(threading.Thread):
         threading.Thread.__init__(self)
         self.daemon = True
         self.message_handler = message_handler
-        self.location = 'localhost', port
+        self.location = '0.0.0.0', port
         self.server = OSC.OSCServer(self.location)
         if verbose:
             log.info("Started OSC Receiver on port %s" % port)
