@@ -5,8 +5,8 @@ from housepy import config, log, util, osc
 
 sender = osc.Sender()
 
-for ip in config['players']:
-    sender.add_target(ip, 39393)
+for player in config['players']:
+    sender.add_target(player['ip'], player['port'])
 
 def message_handler(location, address, data):  
     if address != "/update":

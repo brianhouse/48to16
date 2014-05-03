@@ -7,7 +7,7 @@ import numpy as np
 CHANNEL = None
 
 if len(sys.argv) > 1:
-    CHANNEL = int(sys.argv[1])
+    CHANNEL = int(sys.argv[1])  # 1=bass, 2=cello, 3=viola
 
 db = crashdb.load("data.json")
 note_rows = db['notes']
@@ -15,7 +15,7 @@ db.close()
 notes = [nr[0] for nr in note_rows]
 note_infos = [nr[1] for nr in note_rows]
 
-ctx = animation.Context(1200, 600, background=(0.9, 0.9, 0.9, 1.), fullscreen=False, title="Forty-eight to Sixteen")
+ctx = animation.Context(1200, 600, background=(0.9, 0.9, 0.9, 1.), fullscreen=False, title="Forty-Eight to Sixteen", smooth=False)
 
 page_duration = 5.0
 margin = 1.0
@@ -50,7 +50,7 @@ def message_handler(location, address, data):
         started = True
         start_t = time.time()
         last_t = start_t
-osc.Receiver(39393, message_handler)
+osc.Receiver(config['players'][CHANNEL - 1]['port'] if CHANNEL is not None else 39393, message_handler)
 
 def draw():
     global t
@@ -92,14 +92,17 @@ def draw_frame(t):
         if CHANNEL is not None and channel != CHANNEL:
             continue
 
-        intensity = 1.0 - abs(hitpoint - t)
-        intensity /= 2.0
-        if channel == 1:
-            color = (.6, 0., 0., 1.)
-        elif channel == 2:
-            color = (0., .6, 0., 1.)
-        elif channel == 3:
-            color = (0., 0., .6, 1.)                
+        # intensity = 1.0 - abs(hitpoint - t)
+        # intensity /= 2.0
+        if t < hitpoint:
+            color = (.3, .3, .3, 1.)
+        else:
+            if channel == 1:
+                color = (.6, 0., 0., 1.)
+            elif channel == 2:
+                color = (0., .6, 0., 1.)
+            elif channel == 3:
+                color = (0., 0., .6, 1.)                
 
         vertical += 0.010
         # vertical += int(str(note_info[4])[-2]) * 0.001
