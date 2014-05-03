@@ -27,7 +27,7 @@ def ease_out_in(pos):
 if __name__ == "__main__":
     from housepy import drawing
     ctx = drawing.Context(400, 400, relative=True, flip=True)
-    for n in xrange(1000):
+    for n in range(1000):
         x = float(n) / 1000.0
         y = ease_in_out(x)
         ctx.arc(x, y, 1.0/ctx.width, 1.0/ctx.height, thickness=0, fill=(0., 0., 0.))

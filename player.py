@@ -1,6 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-import json, datetime, time, sys, os, Queue, random, pyglet
+import json, datetime, time, sys, os, queue, random, pyglet
 from housepy import config, log, util, osc, crashdb, animation
 import numpy as np
 
@@ -66,7 +66,7 @@ def draw():
 
 def draw_staff():
     h = 0.125
-    for i in xrange(5):
+    for i in range(5):
         i += 2
         ctx.line(0.0, i * h, 1.0, i * h, thickness=2.0)#, color=(1., 1., 1., 1.))    
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import json, datetime, time, sys, os, random, math
 from housepy import config, log, util, osc

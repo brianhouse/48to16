@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import json, datetime, time, sys, os, calendar, shutil, compile_gpx
 from housepy import config, log, drawing, science, util, osc, crashdb
@@ -31,7 +31,7 @@ video_start_t, video_end_t = compile_gpx.get_video_times(gpx_filename)
 tcx = open(tcx_filename)        
 try:
     xml = ElementTree.fromstring(tcx.read())
-except Exception, e:
+except Exception as e:
     log.error("XML error (%s): %s" % (tcx_filename, e))
     exit()
 
@@ -86,8 +86,8 @@ heartrates_norm = science.normalize(heartrates)
 
 # show
 ctx = drawing.Context(2000, 250, relative=True, flip=True)
-ctx.line([(float(i) / num_samples, cadences_norm[i]) for i in xrange(num_samples)], stroke=(0, 0, 255), thickness=2)
-ctx.line([(float(i) / num_samples, heartrates_norm[i]) for i in xrange(num_samples)], stroke=(255, 0, 0), thickness=2)
+ctx.line([(float(i) / num_samples, cadences_norm[i]) for i in range(num_samples)], stroke=(0, 0, 255), thickness=2)
+ctx.line([(float(i) / num_samples, heartrates_norm[i]) for i in range(num_samples)], stroke=(255, 0, 0), thickness=2)
 ctx.show()
 ctx.image.save("cadence_heartrate.png", 'PNG')
 
@@ -99,7 +99,7 @@ def rate_to_pulse(signal, sample_rate=60):
     elapsed_time = 0.0
     delta = 0.0
     pulses = []
-    for i in xrange(len(signal) * int(sample_rate)):
+    for i in range(len(signal) * int(sample_rate)):
         rate = signal[int(i / sample_rate)] # bpm
         rate /= 60.0  # bps
         if rate > 0:

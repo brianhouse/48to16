@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import json, datetime, time, sys, os, calendar, shutil
 from housepy import config, log, drawing, science, util, osc, crashdb
@@ -11,7 +11,7 @@ def get_video_times(gpx_filename):
     gpx = open(gpx_filename)        
     try:
         xml = ElementTree.fromstring(gpx.read())
-    except Exception, e:
+    except Exception as e:
         log.error("XML error (%s): %s" % (tcx_filename, e))
         exit()
 

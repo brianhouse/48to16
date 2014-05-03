@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys, os, datetime, calendar, compile_gpx, pytz
 import numpy as np
@@ -75,8 +75,8 @@ db.close()
 
 num_samples = len(signal)
 ctx = drawing.Context(10000, 500, relative=True, flip=True, hsv=True)
-ctx.line([(float(i) / num_samples, signal[i]) for i in xrange(num_samples)], stroke=(0., 0., 0.85), thickness=2)
-ctx.line([(float(i) / num_samples, reduced[i]) for i in xrange(num_samples)], stroke=(0.55, 1., 1.), thickness=2)
+ctx.line([(float(i) / num_samples, signal[i]) for i in range(num_samples)], stroke=(0., 0., 0.85), thickness=2)
+ctx.line([(float(i) / num_samples, reduced[i]) for i in range(num_samples)], stroke=(0.55, 1., 1.), thickness=2)
 for peak in max_peaks:
     sample, y = peak
     ctx.arc(float(sample) / num_samples, y, 5. / ctx.width, 5. / ctx.height, thickness=0., fill=(0., 1., 1.))
