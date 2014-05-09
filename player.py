@@ -11,7 +11,7 @@ if len(sys.argv) > 1:
 
 db = crashdb.load("data.json")
 note_rows = db['notes']
-db.close()
+db.close(False)
 notes = [nr[0] for nr in note_rows]
 note_infos = [nr[1] for nr in note_rows]
 
