@@ -32,10 +32,15 @@ def get_note_name(n):
     i = n % 12
     return names[i]
 
-ledgers = {'B': 4, 'C': 5, 'Db': 6, 'D': 6, 'Eb': 7, 'E': 7, 'F': 8, 'Gb': 9, 'G': 9, 'Ab': 10, 'A': 10, 'Bb': 11}
+treble_ledgers = {'Gb': 4, 'G': 4, 'Ab': 5, 'A': 5, 'Bb': 6, 'B': 6, 'C': 7, 'Db': 8, 'D': 8, 'Eb': 9, 'E': 9, 'F': 10}
+def get_treble_ledger(n):
+    name = get_note_name(n)
+    return treble_ledgers[name]
+
+bass_ledgers = {'B': 4, 'C': 5, 'Db': 6, 'D': 6, 'Eb': 7, 'E': 7, 'F': 8, 'Gb': 9, 'G': 9, 'Ab': 10, 'A': 10, 'Bb': 11}
 def get_bass_ledger(n):
     name = get_note_name(n)
-    return ledgers[name]
+    return bass_ledgers[name]
 
 
 def message_handler(location, address, data):
@@ -87,10 +92,12 @@ def draw_frame(t):
         note_info = current_note_info[i]        
         channel = int(note_info[0])
         note = int(note_info[1])        
-        vertical = (get_bass_ledger(note) * 0.0625) + 0.0625
 
         if CHANNEL is not None and channel != CHANNEL:
             continue
+
+        ledger = get_treble_ledger(note) if channel == 3 else get_bass_ledger(note)
+        vertical = (ledger * 0.0625) + 0.0625            
 
         # intensity = 1.0 - abs(hitpoint - t)
         # intensity /= 2.0
