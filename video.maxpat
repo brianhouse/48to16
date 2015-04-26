@@ -4,11 +4,11 @@
 		"appversion" : 		{
 			"major" : 6,
 			"minor" : 1,
-			"revision" : 7,
+			"revision" : 9,
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 295.0, 44.0, 1018.0, 581.0 ],
+		"rect" : [ 34.0, 84.0, 1018.0, 581.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -201,7 +201,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 795.0, 435.0, 87.0, 18.0 ],
-					"text" : "322.744995"
+					"text" : "0."
 				}
 
 			}
@@ -383,7 +383,7 @@
 						"appversion" : 						{
 							"major" : 6,
 							"minor" : 1,
-							"revision" : 7,
+							"revision" : 9,
 							"architecture" : "x86"
 						}
 ,
@@ -580,8 +580,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 90.0, 435.0, 254.0, 20.0 ],
-					"text" : "jit.window output @size 1280 720 @floating 1"
+					"patching_rect" : [ 90.0, 435.0, 336.0, 20.0 ],
+					"text" : "jit.window output @size 1280 720 @floating 1 @fsmenubar 0"
 				}
 
 			}
