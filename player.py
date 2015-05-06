@@ -5,9 +5,12 @@ from housepy import config, log, util, osc, crashdb, animation
 import numpy as np
 
 CHANNEL = None
+INSTRUMENT = None
+POS = {None: 0, 1: 3900, 2: 1350, 3: 2600}
 
 if len(sys.argv) > 1:
     CHANNEL = int(sys.argv[1])  # 1=bass, 2=cello, 3=viola
+    INSTRUMENT = {1: "BASS", 2: "CELLO", 3: "VIOLA"}[CHANNEL]
 
 db = crashdb.load("data.json")
 note_rows = db['notes']
@@ -15,7 +18,9 @@ db.close(False)
 notes = [nr[0] for nr in note_rows]
 note_infos = [nr[1] for nr in note_rows]
 
-ctx = animation.Context(1200, 600, background=(0.9, 0.9, 0.9, 1.), fullscreen=False, title="Forty-Eight to Sixteen", smooth=False)
+ctx = animation.Context(1200, 600, background=(0.9, 0.9, 0.9, 1.), fullscreen=False, title=INSTRUMENT, smooth=False, position=(POS[CHANNEL], 0))
+
+
 
 page_duration = 5.0
 margin = 1.0
